@@ -1,5 +1,5 @@
 import Apperror from "../../utils/Apperror.js"
-import createImageObject from "../../utils/images/createimageObj.js"
+import createImageObject from "../../utils/images/createImageObj.js"
 import deleteImageFile from "../../utils/images/deleteImageFile.js"
 import { getPaginationData } from "../../utils/pagination/pagination.js"
 import * as data from "./category.data.js"
