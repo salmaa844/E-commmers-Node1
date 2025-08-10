@@ -1,4 +1,4 @@
-import createImageObject from "../../utils/images/createimageObj.js";
+import createImageObject from "../../utils/images/createImageObj.js";
 import { getPagination } from "../../utils/pagination/pagination.js";
 import * as service from "./product.service.js"
 
