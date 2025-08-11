@@ -10,20 +10,20 @@ import couponRouter from "./../modules/coupon/coupon.router.js"
 import reviewRouter from "./../modules/review/review.router.js"
 import cors from "cors";
 
-var whitelist = ['http://example1.com', 'http://example2.com']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
+// var whitelist = ['http://example1.com']
+// var corsOptions = {
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
 const init = (express, app) => {
     app.use(express.json());
 
-    app.use(cors(corsOptions))
+    app.use(cors())
     app.use("/",(req,res)=>{
         res.json({
             message:"hi from our api"
