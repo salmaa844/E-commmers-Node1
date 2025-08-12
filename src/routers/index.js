@@ -23,8 +23,11 @@ import cors from "cors";
 const init = (express, app) => {
     app.use(express.json());
 
-    app.use(cors())
-    app.use("/",(req,res)=>{
+    app.use(cors({
+        origin:"http://127.0.0.1:5500",
+        credentials:true
+    }))
+    app.get("/",(req,res)=>{
         res.json({
             message:"hi from our api"
         })
