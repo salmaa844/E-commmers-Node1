@@ -16,19 +16,30 @@ This repository contains a Node.js API for an E-commerce platform that allows us
 
 
 # 🛠 Tech Stack
--Backend: Node.js, Express.js
+Backend: Node.js, Express.js
 
--Database: MongoDB (via Mongoose)
+Database: MongoDB (via Mongoose)
 
--Authentication: JWT (JSON Web Token)
--Validation: Joi
--File uploads: Multer
--Email notifications: Nodemailer
--Scheduling tasks: Node-cron
--Unique IDs: Nanoid
--Security: Bcrypt
--CORS support: cors
--Environment variables: dotenv
+Authentication: JWT (JSON Web Token)
+
+Validation: Joi
+
+File uploads: Multer
+
+Email notifications: Nodemailer
+
+Scheduling tasks: Node-cron
+
+Unique IDs: Nanoid
+
+Security: Bcrypt
+
+CORS support: cors
+
+Environment variables: dotenv
+
+
+
 
 
 # ⚙️Prerequisites
