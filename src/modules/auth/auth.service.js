@@ -6,27 +6,29 @@ import { sendEmail } from "../../utils/email/nodemailer.js";
 import { generateToken } from "../../utils/jwt/generateToken.js";
 import { sendSystemEmail } from "../../utils/email/sendEmail.js"
 import ROLE from "../../../Database/roles.js";
-export const register = async ({ username, email, password, role = ROLE.USER }) => {
+export const register = async ({ username, email, password, role = ROLE.USER, birthDate }) => {
     const existingUser = await authQuery.findUserByEmail(email);
     if (existingUser) {
-        throw new Apperror("email in use", 409)
-
+        throw new Apperror("email in use", 409);
     }
+
     const hashPassword = await hashings.hash(password);
     const code = generateCode(5);
     
     await sendSystemEmail("confirmEmail", email, code);
+
     const newUser = await authQuery.createUser({
         username,
         email,
         password: hashPassword,
         role,
-        code
+        code,
+        birthDate
     });
-    return {
-        newUser
-    };
-}
+
+    return { newUser };
+};
+
 export const login = async ({ email, password }) => {
 
     const user = await authQuery.findUserByEmail(email);
