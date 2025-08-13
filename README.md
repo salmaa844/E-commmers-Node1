@@ -41,23 +41,22 @@ Environment variables: dotenv
 
 
 
-
 # ⚙️Prerequisites
 Before running the API, make sure you have the following installed:
 
 - Node.js
-- MySQL Database
+- MongoDB Database
 
 # 🚀 Installation
 
 1. Clone the Repository
 ```bash
-git clone https://github.com/salmaa844/project1_orm.git
+git clone https://github.com/salmaa844/E-commmers-Node1.git
 
 ```
 2. Navigate to the project directory
 ```bash
-cd project1_orm
+cd E-commmers-Node1
 
 ```
 3. Install dependencies:
@@ -67,16 +66,12 @@ npm install
 4. Create a .env file in the root directory and add the following environment variables
 ```bash
 PORT=your_server_port
-DB_HOST=localhost
-DB_NAME=your_database_name
-DB_USER=your_database_user
-DB_PASSWORD=your_database_password
-DB_DIALECT=mysql
-
+MONGO_URL=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
-
 EMAIL=your_email@gmail.com
 EMAIL_PASS=your_email_password
+SALT=number_of_salt
+
 ```
 5. Start the server: 
 ```bash
@@ -89,30 +84,50 @@ npm run dev
 - POST /api/auth/register — Register new user
 - POST /api/auth/login — Login user
 
-### Courses
+### Products
+GET /api/products — Get all products
 
-- GET /api/courses — Get all courses
-- POST /api/courses — Create new course (Admin)
+GET /api/products/:id — Get product details
 
-### Enrollments
+POST /api/products — Create new product (Admin)
 
-- POST /api/enrollments — Enroll in a course
-- GET /api/enrollments — Get my enrolled courses
+PUT /api/products/:id — Update product (Admin)
+
+DELETE /api/products/:id — Delete product (Admin)
+
+### Cart
+POST /api/cart — Add product to cart
+
+GET /api/cart — Get user's cart items
+
+PUT /api/cart/:id — Update cart item quantity
+
+DELETE /api/cart/:id — Remove item from cart
+
+### Orders
+POST /api/order/add — Place an order
+
+GET /api/order — Get user's orders
+
+GET /api/order/:id — Get order details
 
 ### Reviews
+POST /api/reviews — Add a product review
 
-- POST /api/reviews — Add a review
-- GET /api/reviews — Get reviews
+GET /api/reviews — Get product reviews
+
+
   
 ## Example Request
-###Create course
+###Create Order
 ```bash
-POST /api/courses
+POST /api/order/add
 Authorization: Bearer <token>
 {
-  "title": "JavaScript Basics",
-  "description": "Learn the fundamentals of JavaScript.",
-  "price": 49.99
+    "address":"ramallah",
+    "phone":"0598",
+    "paymentType":"cash",
+    "couponCode":"SALE"
 }
 ```
 
