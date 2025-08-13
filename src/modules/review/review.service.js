@@ -11,6 +11,8 @@ export const createReview = async (review)=>{
 
     if(exist) throw new Apperror("your cant review this product twice",400)
 
+      const orderWithProduct = await data.existOrderWithProduct(review.userId,review.productId)
+      if(!orderWithProduct) throw new Apperror("you cant review products you have never purchase",403)
    return await data.createReview(review);
     
     

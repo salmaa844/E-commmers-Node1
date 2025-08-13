@@ -1,4 +1,5 @@
 import { ReviewSchema } from "./../../../Database/models/review.model.js"
+import { OrderSchema } from "../../../Database/models/order.model.js";
 
 export const findReview = async (data) => {
     return await ReviewSchema.findOne(data)
@@ -28,3 +29,9 @@ export const removeReviewByAdmin = async (id) => {
   return await ReviewSchema.findByIdAndDelete({_id:id});
 }
 
+export const existOrderWithProduct = async(userId,productId)=>{
+   return await OrderSchema.findOne({
+        userId,
+        "products.productId._id":productId
+      })
+    }
