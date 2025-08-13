@@ -5,18 +5,30 @@ This repository contains a Node.js API for an E-commerce platform that allows us
 # ✅ Features
 🔑 User authentication and authorization.
 
-🎓 Enroll in and manage courses.
+🛍 View product details, and search products.
 
-📝 Add, update, and retrieve course reviews.
+🛒 Add products to cart and manage cart items
 
-💾 Data storage with MySQL database using Sequelize ORM.  
+📝 Add, update, and retrieve product reviews.
+
+💾 Data storage with MongoDB database using Mongoose  
 
 
 
 # 🛠 Tech Stack
-- Backend: Node.js, Express.js
-- Database: MySQL (via Sequelize ORM)
-- Authentication: JWT (JSON Web Token)
+.Backend: Node.js, Express.js
+.Database: MongoDB (via Mongoose)
+.Authentication: JWT (JSON Web Token)
+.Validation: Joi
+.File uploads: Multer
+.Email notifications: Nodemailer
+.Scheduling tasks: Node-cron
+.Unique IDs: Nanoid
+.Security: Bcrypt
+.CORS support: cors
+.Environment variables: dotenv
+
+
 # ⚙️Prerequisites
 Before running the API, make sure you have the following installed:
 
