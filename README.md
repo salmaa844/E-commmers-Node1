@@ -77,46 +77,62 @@ SALT=number_of_salt
 ```bash
 npm run dev
 ```
-# 🌐API Overview
+# 🌐 API Overview
 
-### Authentication
+## 1. Authentication
+- `POST /api/auth/register` — Register a new user  
+- `POST /api/auth/login` — Login user  
 
-- POST /api/auth/register — Register new user
-- POST /api/auth/login — Login user
+## 2. Products
+- `GET /api/products` — Get all products  
+- `GET /api/products/:id` — Get product details  
+- `POST /api/products` — Create new product (Admin)  
+- `PUT /api/products/:id` — Update product (Admin)  
+- `DELETE /api/products/:id` — Delete product (Admin)  
 
-### Products
-GET /api/products — Get all products
+## 3. Categories & Subcategories
+### Categories
+- `GET /api/categories` — Get all categories  
+- `POST /api/categories` — Create category (Admin)  
+- `PUT /api/categories/:id` — Update category (Admin)  
+- `DELETE /api/categories/:id` — Delete category (Admin)  
 
-GET /api/products/:id — Get product details
+### Subcategories
+- `GET /api/subcategories` — Get all subcategories  
+- `POST /api/subcategories` — Create subcategory (Admin)  
+- `PUT /api/subcategories/:id` — Update subcategory (Admin)  
+- `DELETE /api/subcategories/:id` — Delete subcategory (Admin)  
 
-POST /api/products — Create new product (Admin)
+## 4. Cart
+- `POST /api/cart` — Add product to cart  
+- `GET /api/cart` — Get user's cart items  
+- `PUT /api/cart/:id` — Update cart item quantity  
+- `DELETE /api/cart/:id` — Remove item from cart  
 
-PUT /api/products/:id — Update product (Admin)
+## 5. Orders
+- `POST /api/order/add` — Place an order  
+- `GET /api/order` — Get user's orders  
+- `GET /api/order/:id` — Get order details  
 
-DELETE /api/products/:id — Delete product (Admin)
+## 6. Coupons
+- `GET /api/coupons` — Get all coupons  
+- `POST /api/coupons` — Create coupon (Admin)  
+- `PUT /api/coupons/:id` — Update coupon (Admin)  
+- `DELETE /api/coupons/:id` — Delete coupon (Admin)  
 
-### Cart
-POST /api/cart — Add product to cart
+## 7. Reviews
+- `POST /api/reviews` — Add a product review  
+- `GET /api/reviews` — Get product reviews  
 
-GET /api/cart — Get user's cart items
+## 8. Favorites
+- `POST /api/favorites` — Add product to favorites  
+- `GET /api/favorites` — Get user's favorite products  
+- `DELETE /api/favorites/:id` — Remove product from favorites  
 
-PUT /api/cart/:id — Update cart item quantity
-
-DELETE /api/cart/:id — Remove item from cart
-
-### Orders
-POST /api/order/add — Place an order
-
-GET /api/order — Get user's orders
-
-GET /api/order/:id — Get order details
-
-### Reviews
-POST /api/reviews — Add a product review
-
-GET /api/reviews — Get product reviews
-
-
+### Validation
+- User input is validated (required fields, types, formats) using **Joi**.
+- JWT is validated for protected routes.
+- Invalid requests return descriptive error messages.
   
 ## Example Request
 ###Create Order
