@@ -9,6 +9,7 @@ import orderRouter from "./../modules/order/order.router.js"
 import couponRouter from "./../modules/coupon/coupon.router.js"
 import reviewRouter from "./../modules/review/review.router.js"
 import cors from "cors";
+import { initJobs } from "../jobs/initJobs.js";
 
 // var whitelist = ['http://example1.com']
 // var corsOptions = {
@@ -43,7 +44,7 @@ const init = (express, app) => {
     app.use("/api/coupon", couponRouter);
     app.use("/api/review", reviewRouter);
 
-
+    initJobs()
     app.use(globalErrorHandler)
 }
 export default init;
