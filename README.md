@@ -142,9 +142,9 @@ POST /api/order/add
 Authorization: Bearer <token>
 {
     "address":"ramallah",
-    "phone":"0598",
+    "phone":"0598899333",
     "paymentType":"cash",
-    "couponCode":"SALE"
+    "couponCode":"SALE%25"
 }
 ```
 
