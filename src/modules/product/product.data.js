@@ -3,14 +3,26 @@ export const createProduct = async(data)=>{
     return await ProductSchema.create(data)
 }
 
-export const getAllProduct = async(limit,skip)=>{
-    const results =  await ProductSchema.find().select("name description price category status attributes subcategory")
+export const getAllProduct = async(limit,skip,search)=>{
+    const results =  await ProductSchema.find({
+        $or:[
+           { name:{$regex:search ,$options:"i"}},
+           { description:{$regex:search ,$options:"i"}}
+        ]
+    }).select("name description price category status attributes subcategory")
     .populate("category","name")
     .limit(limit)
     .skip(skip);
 
-    const count = await ProductSchema.countDocuments();
-
+    const count = await ProductSchema.countDocuments(
+        {
+        $or:[
+           { name:{$regex:search ,$options:"i"}},
+           { description:{$regex:search ,$options:"i"}}
+        ]
+    }
+    );
+    
     return {
         count,
         results

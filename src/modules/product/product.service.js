@@ -23,8 +23,8 @@ export const createProduct = async (body) => {
 
 }
 
-export const getAllProduct = async (page,limit,skip) => {
-    const product = await data.getAllProduct(limit,skip);
+export const getAllProduct = async (page,limit,skip,search) => {
+    const product = await data.getAllProduct(limit,skip,search);
     if (!product) throw new Apperror("products not found", 400);
     const pagination = getPaginationData(product,page,limit)
     return pagination;
