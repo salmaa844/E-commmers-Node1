@@ -130,9 +130,10 @@ npm run dev
 - `DELETE /api/favorites/:id` — Remove product from favorites  
 
 ### Validation
-- User input is validated (required fields, types, formats) using **Joi**.
-- JWT is validated for protected routes.
-- Invalid requests return descriptive error messages.
+- Required fields are checked with Joi
+- JWT verified for protected routes
+- Invalid requests return descriptive errors
+
   
 ## Example Request
 ###Create Order
