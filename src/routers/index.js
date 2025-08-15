@@ -11,7 +11,7 @@ import reviewRouter from "./../modules/review/review.router.js"
 import cors from "cors";
 import { initJobs } from "../jobs/initJobs.js";
 
-// var whitelist = ['http://example1.com']
+// var whitelist = ['http://127.0.0.1:5500']
 // var corsOptions = {
 //   origin: function (origin, callback) {
 //     if (whitelist.indexOf(origin) !== -1) {
@@ -25,7 +25,7 @@ const init = (express, app) => {
     app.use(express.json());
 
     app.use(cors({
-        origin:"http://127.0.0.1:5500",
+        origin:"*",
         credentials:true
     }))
     app.get("/",(req,res)=>{
