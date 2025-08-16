@@ -32,10 +32,10 @@ export const register = async ({ username, email, password, role = ROLE.USER, bi
 export const login = async ({ email, password }) => {
 
     const user = await authQuery.findUserByEmail(email);
+    if (!user) throw new Apperror("invaled data", 401)
     if (!user.confirmEmail) {
     throw new Apperror("Please confirm your email before logging in", 403);
     }
-    if (!user) throw new Apperror("invaled data", 401)
     const compare = await hashings.compareHash(password, user.password);
     if (!compare) throw new Apperror("invaled data", 401);
 
