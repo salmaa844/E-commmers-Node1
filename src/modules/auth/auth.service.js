@@ -30,20 +30,25 @@ export const register = async ({ username, email, password, role = ROLE.USER, bi
 };
 
 export const login = async ({ email, password }) => {
+  const user = await authQuery.findUserByEmail(email);
+  if (!user) throw new Apperror("Invalid email or password", 401);
 
-    const user = await authQuery.findUserByEmail(email);
-    if (!user) throw new Apperror("invaled data", 401)
-    const compare = await hashings.compareHash(password, user.password);
-    if (!compare) throw new Apperror("invaled data", 401);
+  if (!user.confirmEmail) {
+    throw new Apperror("Please confirm your email before logging in", 403);
+  }
 
-    const token = generateToken({
-        id: user.id,
-        username: user.name,
-        email: user.email
-    })
+  const compare = await hashings.compareHash(password, user.password);
+  if (!compare) throw new Apperror("Invalid email or password", 401);
 
-    return token;
-}
+  const token = generateToken({
+    id: user.id,
+    username: user.name,
+    email: user.email
+  });
+
+  return token;
+};
+
 
 export const confirmEmail = async ({ email, code }) => {
     const user = await authQuery.findUserByEmail(email);
