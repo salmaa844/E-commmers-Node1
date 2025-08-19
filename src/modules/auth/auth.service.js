@@ -41,10 +41,12 @@ export const login = async ({ email, password }) => {
   if (!compare) throw new Apperror("Invalid email or password", 401);
 
   const token = generateToken({
-    id: user.id,
-    username: user.name,
-    email: user.email
-  });
+  id: user.id,
+  username: user.username,   
+  email: user.email,
+  role: user.role        
+});
+
 
   return token;
 };
