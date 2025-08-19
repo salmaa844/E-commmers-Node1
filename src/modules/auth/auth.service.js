@@ -44,6 +44,7 @@ export const login = async ({ email, password }) => {
   id: user.id,
   username: user.username,   
   email: user.email,
+  status:user.status,
   role: user.role        
 });
 
