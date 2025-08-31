@@ -21,13 +21,24 @@ export const createProduct = async (req, res, next) => {
 }
 
 export const getAllProduct = async (req, res, next) => {
-    const { page, limit, skip } = getPagination(req);
-    const product = await service.getAllProduct(page, limit, skip,req.query.search);
-    return res.status(200).json({
-        message: "success",
-        data: product
-    })
-}
+  const { page, limit, skip } = getPagination(req);
+  const product = await service.getAllProduct(page, limit, skip);
+  return res.status(200).json({
+    message: "success",
+    data: product,
+  });
+};
+
+export const searchProduct = async (req, res, next) => {
+  const { page, limit, skip } = getPagination(req);
+  const { query } = req.query;
+  const product = await service.searchProduct(page, limit, skip, query);
+  return res.status(200).json({
+    message: "success",
+    data: product,
+  });
+};
+
 export const getProductById = async (req, res, next) => {
 
     const product = await service.getProductById(req.params.id);

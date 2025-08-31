@@ -27,6 +27,7 @@ router.post(
 
 );
 router.get("/",asyncHandler(controller.getAllProduct))
+router.get("/search", asyncHandler(controller.searchProduct))
 router.get("/:id",asyncHandler(controller.getProductById))
 router.put("/:id",asyncHandler(controller.updateProductById))
 
