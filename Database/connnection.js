@@ -7,6 +7,7 @@ const connectDB = async()=>{
         console.log("MONGO connection");
     }catch(error){
         console.log("MONGO connection failed",error.messsage);
+        
     }
 }
 
