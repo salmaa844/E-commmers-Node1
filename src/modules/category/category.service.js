@@ -23,8 +23,9 @@ const getallCategory = async (page,limit,skip) => {
     if (!items || items.length === 0) throw new Apperror("categories not found", 400)
          const pagination = getPaginationData(items,page,limit)
             return {
-                ...pagination,
-                items
+                count:items.count,
+                categories:items.data,
+                ...pagination
             };
     
 }

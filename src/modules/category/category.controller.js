@@ -15,8 +15,9 @@ const getallCategory = async (req, res, next) => {
     const {page,limit,skip} = getPagination(req)
     const category = await service.getallCategory(page,limit,skip);
     return res.status(201).json({
-        message: "categories",
-        data: category
+        message: "success",
+        count:category.count,
+        categories:category.categories
     })
 }
 const getCategoryById = async (req, res, next) => {
@@ -24,7 +25,7 @@ const getCategoryById = async (req, res, next) => {
     const category = await service.getCategoryById(req.params.id);
     return res.status(200).json({
         message: "category found",
-        data: category
+        data:category
     });
 
 };
