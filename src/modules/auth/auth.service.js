@@ -17,7 +17,9 @@ export const register = async ({ username, email, password, role = ROLE.USER, bi
     
     await sendSystemEmail("confirmEmail", email, code);
 
-    const newUser = await authQuery.createUser({
+    
+
+    return await authQuery.createUser({
         username,
         email,
         password: hashPassword,
@@ -25,8 +27,6 @@ export const register = async ({ username, email, password, role = ROLE.USER, bi
         code,
         birthDate
     });
-
-    return { newUser };
 };
 
 export const login = async ({ email, password }) => {
